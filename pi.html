@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PI = 3.</title>
+    </head>
+    <body><p></p><script>
+var f = Math.floor;
+var p = document.getElementsByTagName('p')[0];
+var a = [];
+var b;
+var c;
+var d = 0;
+var i = 0;
+var j;
+var k;
+var l;
+function g(){
+    b = 0;
+    for (j = i + 17; j > i; --j) {
+        b = (200000 + b) * j;
+        a[j] = b % (j + j + 1);
+        b = f(b / (j + j + 1));
+    }
+    for (j = i; j > 0; j -= 17) {
+        a[j] += b * j;
+        b = 0;
+        for (k = j; k > j - 17; --k) {
+            l = k + k + 1;
+            c = f(a[k] / l) * 100000 + f(b / l) * k;
+            b = b % l * k + a[k] % l * 100000;
+            a[k] = b % l;
+            b = c + f(b / l);
+        }
+    }
+    d = d * 100000 + b;
+    if(i) {
+        p.innerHTML += ('00000'+d).slice(-10,-5) + (i % 20 ? '' : '<br>\n');
+        d %= 100000
+    }
+    i += 17;
+    setTimeout(g,0);
+}
+g();
+</script>
+</body>
+</html>
